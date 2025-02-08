@@ -22,3 +22,48 @@ function myFunction() {
 // code here can NOT use carName
 
 
+
+
+// Immediately Invoked Function Expressions (IIFE) :  
+//  A JavaScript function expression can be immediately invoked, or executed, by adding parentheses () 
+//  at the end of the function declaration. The function expression is created when the name is declared,
+//  and the function is run as soon as it is declared. Example: ()()
+
+function myFun (){
+    console.log("Hello World");
+};
+myFun();
+
+
+console.log("------------------------------------------------------");
+// to immediate call
+(function myFun1 (){ // named IIFE
+    console.log("Hello World1");
+})();
+
+console.log("------------------------------------------------------");
+// using arrowFun
+( ()=> (console.log("Hello world from arrow function")) )();
+
+
+
+
+
+// Imp: you will get error there if you not user semicolon at end of the first function because it
+//  will consider it as a part of the second function.
+
+( function(){ // without name IIFE
+    console.log('new World');
+} )() ; // semi colon is minded
+
+( function(){
+    console.log('new World');
+} )();
+
+
+
+// is you want to pass argument
+( function(name){
+    console.log(`new ${name}`);
+} )("world");
+
