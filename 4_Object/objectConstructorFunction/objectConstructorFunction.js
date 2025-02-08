@@ -25,7 +25,7 @@ console.log(myMother);//{ firstName: 'Sally', lastName: 'Rally', age: 48, eyeCol
 
 
 // Adding a Property to a Constructor
-// You can NOT add a new property to an object constructor:
+// You can NOT add a new property to an object constructor directly:
 Person.language = 'English';
 console.log(myFather.language);//undefined
 
@@ -58,15 +58,17 @@ console.log(cat.info());
 
 cat.changeName = function(newName){
     this.name = newName;
-};
-cat.changeName("mew");
-console.log(cat.info());
-console.log(cat.name);
+}; // adding a method to particular object.
+console.log(cat.name); // Tom
+cat.changeName("mew"); // change name of cat
+console.log(cat.info()); // mew is a Cat of age 2 of color Black
+console.log(cat.name); // mew
 
-// You cannot add a new method to an object constructor function.
+// You cannot add a new method to an object constructor function directly.
+console.log(Animal);
 Animal.changeName = function(newName){
     this.name = newName;
-}
+} // 
 
 const dog = new Animal('Tommy', 'Dog', 3,'Brown');
 console.log(dog.info());
