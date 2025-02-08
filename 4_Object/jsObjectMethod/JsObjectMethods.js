@@ -8,7 +8,8 @@ const person = {
     }
 }
 
-console.log(typeof person.fullName);
+console.log(typeof person.fullName); // function
+console.log(typeof person.fullName()); // type will be string because the return type is string.
 console.log(person.fullName());// it will call the function and return the value of the function
 console.log(person.fullName);// If you access the fullName property without (), it will return the function definition
 
@@ -17,8 +18,8 @@ console.log(person.fullName);// If you access the fullName property without (), 
 person.name = function (){
     return (this.firstName +" " + this.lastName).toUpperCase();
 }
-console.log(person);
-console.log(person.name());
+console.log(person); // {firstName: 'sameer', age: 21, lastName: 'Kushwaha', fullName: ƒ, name: ƒ}
+console.log(person.name()); // SAMEER KUSHWAHA
 
 document.querySelector('.box').innerText = person.name();
 
@@ -39,7 +40,7 @@ for(let x in animal){
 
 // in the forms of array
 const array =  Object.values(animal);
-document.querySelector('.box').innerText = array;
+document.querySelector('.box').innerText = array; // ["lion", 10, "yellow", 200]
 
 
 // Using Object.entries()
@@ -47,9 +48,9 @@ text = "";
 for ([key,value] of Object.entries(animal)){
     text += key +":" + value+'\n';
 }
-document.querySelector('.box').innerText = text;
+document.querySelector('.box').innerText = text; // name:lion\nage:10\ncolor:yellow\nweight:200
 
 // Using JSON.stringify()
 let myString = JSON.stringify(animal);
-document.querySelector('.box').innerText = myString;
+document.querySelector('.box').innerText = myString; // {"name":"lion","age":10,"color":"yellow","weight":200}
 

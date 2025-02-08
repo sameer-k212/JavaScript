@@ -35,7 +35,7 @@ console.log(p1.firstName); // John
 // JavaScript Object Methods
 // Create an Object
 const person2 = {
-    firstName: "John",
+  firstName : "John",
   lastName : "Doe",
   id       : 5566,
   fullName : function() {
@@ -50,7 +50,7 @@ console.log(person2.fullName()); // John Doe
 // Objects are mutable: They are addressed by reference, not by value.
 const x = person;
 // The object x is not a copy of person. The object x is person.
-// The object x and the object person share the same memory address.
+// The object x and the object 'person' share the same memory address.
 // Any changes to x will also change person:
 console.log(person); // {firstName: 'John', lastName: 'Doe', age: 50, eyeColor: 'blue'}
 console.log(x); // {firstName: 'John', lastName: 'Doe', age: 50, eyeColor: 'blue'}
@@ -79,8 +79,8 @@ const myObj = {
     }
   }
 console.log(myObj);
-console.log(myObj.myCars);
-console.log(myObj.myCars.car1);
+console.log(myObj.myCars); // {car1: 'Ford', car2: 'BMW', car3: 'Fiat'}
+console.log(myObj.myCars.car1); // Ford
 
 // In JavaScript, almost "everything" is an object.
 // Objects are objects
