@@ -63,7 +63,7 @@ console.log("------------------------------------------------------");
 
 
 // is you want to pass argument
-( function(name){
+(  function(name){
     console.log(`new ${name}`);
-} )("world");
+}  )("world");
 
