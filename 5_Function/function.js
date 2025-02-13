@@ -67,3 +67,19 @@ console.log("------------------------------------------------------");
     console.log(`new ${name}`);
 }  )("world");
 
+
+
+
+// function expression
+function name(){
+    console.log("this is a name function");
+};
+
+
+let fun = function (){
+    console.log("this is anonymus fun");
+}
+
+let v = fun;
+v = null;
+v();
