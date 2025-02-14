@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>This is Js folder for Learning..</h1>
+    <button id="start">start</button>
+    <button id="end">end</button>
+
+    <script>
+        setTimeout(function(){
+            console.log("Welcome to Js Folder: There you will see setTimeout() Function: ")
+        },2000);
+        let title = function(){
+            document.querySelector('h1').innerText = "This Title is Changed By Js";
+            console.log("Title has been changed Now you can not stop it");
+        }
+        let timerStart;
+        document.querySelector('#start').addEventListener('click',function(){
+            console.log("start has been Clicked to change heading in 10 secs");
+            timerStart = setTimeout(title,5000);
+        });
+        document.querySelector("#end").addEventListener('click',function(){
+            console.log("End button has been clicked to stop the title change");
+            clearTimeout(timerStart);
+        });
+
+    </script>
+</body>
+</html>

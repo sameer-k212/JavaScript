@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>This is Heading.</h1>
+    <button id="start">start</button>
+    <button id="end">end</button>
+    <script>
+        const callName = function(str){
+            document.querySelector("h1").innerText = str + Date.now();
+        }
+
+        let setTime;
+        document.querySelector("#start").addEventListener("click",function(){
+            setTime = setInterval(callName,1000,"Date:");
+        })
+        document.querySelector("#end").addEventListener("click",function(){
+            clearInterval(setTime);
+        });
+        
+    </script>
+</body>
+</html>

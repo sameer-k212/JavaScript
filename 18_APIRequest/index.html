@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const reqUrl = 'https://api.github.com/users/sameerkushwaha-124';
+        const xhr =  new XMLHttpRequest();
+        xhr.open('GET',reqUrl); //  (method,String)
+        console.log(xhr.readyState);
+
+        xhr.onreadystatechange = function(){
+            console.log(xhr.readyState);
+            if(xhr.readyState === 4){
+                console.log(this.responseText);
+                const data = this.responseText;
+                console.log(data.followers_url); // undefined because data is a string
+                console.log(typeof data); // string
+                // now use JSON.parse() to convert string to json object
+                const jsonData = JSON.parse(data); // parse convert string to json
+                console.log(typeof jsonData) // object
+                // now we can extract value of followers from json object
+                console.log(jsonData.followers);  // 1
+                console.log(jsonData.followers_url);// https://api.github.com/users/sameerkushwaha-124/followers
+            }
+        }
+        xhr.send();
+    </script>
+</body>
+</html>

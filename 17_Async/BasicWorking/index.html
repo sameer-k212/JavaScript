@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello world! This is h1 Tag..</h1>
+    <button id="stop">stop</button>    
+
+
+    <script>
+
+         setTimeout(function(){       // either you can give function reference or function itself.
+            console.log("Sameer Kushwaha"); 
+        },5000);
+
+        // Example:
+        let name = function(){
+            console.log("Hyy! Sameer.");
+        }
+
+        let changeTitle = function(){
+            document.querySelector('h1').innerText = "Best Js Series!";
+        }
+        const changeMe = setTimeout(changeTitle,5000);
+
+        document.querySelector('#stop').addEventListener('click',function(){
+            clearTimeout(changeMe);
+            console.log("Timer Stopped");
+        });
+        
+
+
+
+    </script>
+</body>
+</html>
