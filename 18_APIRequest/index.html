@@ -3,10 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>API Request</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="container">
+        <div class="card">
+            <img src="#" alt="person">           
+        </div>
+        <div class="personal-info">
+            <h5 id = 'name'>name</h5>
+            <h5 id = 'followers'>Followers</h5>
+            <h5 id="following">following</h5>
+        </div>
+        <div class="social-media">
+            <a href="https://www.linkedin.com/in/sameerkushwaha124/"><img src="img\linkedin.png" alt="linkedin"></a>
+            <a href="#"><img src="img\facebook.png" alt="facebook"></a>
+            <a href="https://leetcode.com/u/s_a_m2003/"><img src="img\leetcode.png" alt="leetcode"></a>
+            <a href="https://github.com/sameerkushwaha-124"><img src="img\github-sign.png" alt="github"></a>
+            <a href="https://web.whatsapp.com/"><img src="img\social.png" alt="whatsApp"></a>
+        </div>
+    </div>
     
+
     <script>
         const reqUrl = 'https://api.github.com/users/sameerkushwaha-124';
         const xhr =  new XMLHttpRequest();
@@ -26,6 +45,11 @@
                 // now we can extract value of followers from json object
                 console.log(jsonData.followers);  // 1
                 console.log(jsonData.followers_url);// https://api.github.com/users/sameerkushwaha-124/followers
+                document.querySelector("img").src = jsonData.avatar_url;
+                document.querySelector("#name").innerHTML = "Name: " + jsonData.name;
+                document.querySelector("#followers").innerHTML = "Followers: " + jsonData.followers;
+                document.querySelector("#following").innerHTML = "Following: " + jsonData.following;
+
             }
         }
         xhr.send();
