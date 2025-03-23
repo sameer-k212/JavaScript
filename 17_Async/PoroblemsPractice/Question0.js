@@ -6,8 +6,9 @@ async function a() {
 
 async function b() {
     console.log(3);
-    await c();
+    c();
     console.log(4);
+    console.log(9);
 }
 
 async function c() {

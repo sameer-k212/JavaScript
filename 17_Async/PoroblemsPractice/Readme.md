@@ -1,5 +1,7 @@
 # Sab Kuchh Pahel call stack me phir call stack se ya toh  (web api se task queue me) ya (microtask queue me ata hai) phir event loop se call stack me ata hai...... (pahle micro task queue completely execute hota hain phir, )
 
+![alt text](image.png)
+
 
 Promise . resolve()    // this create a new promise object that instantly resolve
 . then(()=> console.log(1));    //this line first come to call stack and then so promise is already resolved
@@ -15,6 +17,7 @@ queueMicrotask(()=>{   // this will first come to call stack and then it will mo
         console.log(5);
     })
 });
+
     
 console. log(4); // and then it will come to call stack and print 4.
 
@@ -69,53 +72,106 @@ Promise.resolve().then(...) is sent to the Microtask Queue (higher priority than
 4. Fourth Line --> console.log("End"); jo ki sync hoga toh ise main thread abhi execute kardega.
                    So abb sync code execute ho chuka hoga toh abb async code execute hoga based on 
                    Priority(Microtask Queue (higher priority than setTimeout))
-
-# Question:
+------------------------------------------------------------------------------------------------------------
 async function a() {
     console.log(1);
     await b();
     console.log(2);
 }
+
 async function b() {
     console.log(3);
-    await c();
+    c();
     console.log(4);
+    console.log(9);
 }
+
 async function c() {
     console.log(5);
     await d();
     console.log(6);
 }
+
 async function d() {
     console.log(7);
 }
+
 a();
 console.log(8);
 
-# SOLUTION: 
-kaam ki baat : abb tum soch rahe ho ki first line call hua jo ki a(); hai toh ye toh async hain matlab ise main thread execute nahi kareg aur event loop ki help se web api me daldega.
--- but but but -- aisa nahi hoga kyunki agar koi asyc funtion(user defined) hain toh vo bhi synchrone hi 
-                  execute hoga jab tak await na mile..
-                  jaise hi await milega toh vo function(in which await statement is present) move ho jayega
-                  microtask queue me.
+# Execution Flow:
+1. Synchronous Execution Begins:
+a() is called.
+console.log(1) is executed.
+Output: 1
+await b() is encountered. b() is called, and a() pauses until b() resolves.
 
-1. First line --> a(); jo ki async tabhi execute hoga kyunki ye async function user defined hian tab tak jab    
-    tak await na mil jaye..so abb a(); call hoga toh a() ki execution context create hoga.
-    
-    1. isme first line --> console.log(1); jo ki sync hoga toh main thread ise abhi execute kardega.
-    2. await b(); --> abb await encounter hua toh abb a() ko microtask queue me daldega; b() ki execution    
-        context create hoga.
-        1. isme first line --> console.log(3); jo ki sync hoga toh main thread ise abhi execute kardega.
-        2. await c(); --> abb await encounter hua toh abb b() ko microtask queue me daldega;
-            c() ki execution context create hoga.
-            1. isme first line --> console.log(5); jo ki sync hoga toh main thread ise abhi execute kardega.
-            2. await d(); --> abb await encounter hua toh abb c() ko microtask queue me daldega.
-                    
---> kyunki abb sare asyc funtions abb microtask queue me dal chuke hain toh. main thread check karega ki kya koi sync code bacha toh nahi toh  microtask queue ke code execute hone pahle vo execute hoga.
+2. Execution of b():
+console.log(3) is executed.
+Output: 1, 3
+c() is called without await, so b() does not wait for c() to complete.
 
-last line --> console.log(8); jo ki sync hoga toh main thread ise abhi execute kardega.
+3. c() starts executing:
+console.log(5) is executed.
+Output: 1, 3, 5
+await d() is encountered. d() is called, and c() pauses until d() resolves.
+console.log(7) is executed.
+Output: 1, 3, 5, 7
 
---> and then next microtask queue se call stack me ayega and then rest async code will execute sequentially.
+-----> d() resolves, and c() schedules console.log(6) in the microtask queue.
+
+4. b() continues executing synchronously:
+console.log(4) is executed.
+Output: 1, 3, 5, 7, 4
+console.log(9) is executed.
+Output: 1, 3, 5, 7, 4, 9
+b() completes and resolves its promise.
+
+5. Synchronous Code Continues:
+a() resumes after await b() resolves.
+console.log(8) is executed (outside of a()).
+Output: 1, 3, 5, 7, 4, 9, 8
+
+6. Microtask Queue Execution:
+The event loop processes the microtask queue:
+console.log(6) (from c()) is executed.
+Output: 1, 3, 5, 7, 4, 9, 8, 6
+console.log(2) (from a()) is executed.
+Output: 1, 3, 5, 7, 4, 9, 8, 6, 2
+
+# Key Takeaways:
+1. async Functions:
+Always return a promise.
+Use await to pause execution until a promise resolves.
+
+2. await Behavior:
+If await is not used, the function continues executing synchronously, even if the called function is async.
+
+3. Microtask Queue:
+Promises and async/await use the microtask queue.
+Microtasks are executed after the current synchronous code completes but before the next event loop cycle.
+
+4. Order of Execution:
+Synchronous code runs first.
+Microtasks (e.g., console.log(6) and console.log(2)) run after synchronous code but before the next event loop cycle.
+
+5. Visualization of Execution Flow:
+Synchronous Code:
+1, 3, 5, 7, 4, 9, 8
+
+6. Microtask Queue:
+6, 2
+
+Final Answer:
+1
+3
+5
+7
+4
+9
+8
+6
+2
 
 link : https://www.youtube.com/watch?v=eiC58R16hb8  (concept)
  
