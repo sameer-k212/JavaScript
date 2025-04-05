@@ -5,12 +5,14 @@
 
 // 1. const : used for constant value and it has block scope.
 const userId = 2215001565; 
-console.log(typeof userId);
+console.log(typeof userId); // it will give number
+const c = 'a';
+console.log(typeof c); // it will give string
 
-//  changing value;
+// changing value;
 // const val = 9;
-// val = 8  // if we do get compile time error
-// console.log(val);    
+// val = 8  // if we do, get compile time error.
+// console.log(val);            
 
 
 // 2.let : used for variable and it has block scope.
@@ -18,7 +20,7 @@ let data;
 console.log(data);  // it will give undefined.
 //  console.log(email);   it will give error because it is not defined
 let email = "sameerkushwaha2003@gmail.com"
-console.log(email);
+console.log(email); 
 
 
 
@@ -30,10 +32,10 @@ console.log(userPassword);
 
 
 
-//4. self defined variable
+//4. self defined variable: global variable(scope)
 userName = "Sameer Kushwaha";
-email = "sameer.kushawaha_cs22@gla.ac.in"
-userName  = "Sam"
+email = "sameer.kushawaha_cs22@gla.ac.in";
+userName  = "Sam";
 console.log(userName);
 console.log(email);
 
@@ -50,5 +52,9 @@ var a = str.split("name");
 console.log(a);
 
 
-console.log(eval('2+6'));
+console.log(eval('2+6')); // it will give 8
+console.log(eval('2+6+8')); // it will give 16
+console.log(eval('2'+6)); // 26
+console.log(eval('2'+'2')); // 22
+console.log(eval('2+6'+'8'+3)); // 685
 
