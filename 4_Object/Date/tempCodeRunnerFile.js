@@ -1,7 +1,4 @@
-let myDate = new Date();
-// console.log(myDate);
-// console.log(myDate.toString());
-// console.log(myDate.toJSON());
+console.log(myDate.toJSON());
 // console.log(myDate.toDateString());
 // console.log(myDate.toTimeString());
 
@@ -9,10 +6,10 @@ let myDate = new Date();
 // console.log(myDate.getMonth());
 // console.log(myDate.getDate());
 
-let myCreatedDate = new Date(2020, 0, 1, 12, 0, 0, 0);
-console.log(myCreatedDate.toString());
-console.log(myCreatedDate.toJSON());
-console.log(myCreatedDate.toLocaleString());
+// let myCreatedDate = new Date(2020, 0, 1, 12, 0, 0, 0);
+// console.log(myCreatedDate.toString());
+// console.log(myCreatedDate.toJSON());
+// console.log(myCreatedDate.toLocaleString());
 // console.log(myCreatedDate.toDateString());
 // console.log(myCreatedDate.toTimeString());
 
