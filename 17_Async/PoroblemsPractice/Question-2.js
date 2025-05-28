@@ -2,8 +2,9 @@ Promise . resolve()    // this create a new promise object that instantly resolv
 . then(()=> console.log(1));    //this line first come to call stack and then so promise is already resolved
                                  // so the handler will immediately move this promise to microtask queue.
 
+// SetTimeout is not a async function, it is a web api function that will be executed after the specified time.
 setTimeout(()=>console. log(2) ,10);  // this will first come to call stack which is responsible for 
-                                      //initiating timer it will immediately goes to web api and after
+                                      // initiating timer it will immediately goes to web api and after
                                       //  10ms it will come to task queue.
 
 queueMicrotask(()=>{   // this will first come to call stack and then it will move to microtask queue
