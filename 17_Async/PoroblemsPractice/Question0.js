@@ -20,13 +20,9 @@
 // JavaScript engine (like V8 in Chrome) ek single main thread par kaam karta hai.
 
 // Saare synchronous tasks, jaise:
-
 // console.log()
-
 // for loops
-
 // variable assignment
-
 // function calls
 // → ye sab main thread mein hi execute hote hain.
 
