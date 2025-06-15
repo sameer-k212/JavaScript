@@ -88,10 +88,10 @@
 
 
 // JavaScript Asynchronous Execution Example
-async function greet() {
-  return "Hello, Sameer!";
-}
-greet().then((msg)=> console.log(msg));   // Output: Hello, Sameer!
+// async function greet() {
+//   return "Hello, Sameer!";
+// }
+// greet().then((msg)=> console.log(msg));   // Output: Hello, Sameer!
 
 // JavaScript Asynchronous Execution Example with await
 async function a() {
@@ -139,25 +139,25 @@ console.log(8);
 //  │ console.log(2) (from a)│
 //  └───────────────────────-┘
 
-function wait(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms)); // Returns a promise that resolves after `2` seconds
-}
+// function wait(ms) {
+//   return new Promise(resolve => setTimeout(resolve, ms)); // Returns a promise that resolves after `2` seconds
+// }
 
-async function sayHi() {
-  console.log("Before wait");
-  await wait(2000); // Waits for 2 seconds
-  console.log("After 2 seconds"); // because of await, this will execute from the microtask queue
-}
+// async function sayHi() {
+//   console.log("Before wait");
+//   await wait(2000); // Waits for 2 seconds
+//   console.log("After 2 seconds"); // because of await, this will execute from the microtask queue
+// }
 
-sayHi();
+// sayHi();
 
 // ✅ Realistic Use Case (with fetch)
-async function getUser() {
-  const response = await fetch("https://jsonplaceholder.typicode.com/users/1");
-  const data = await response.json();
-  console.log(data.name);
-}
-getUser();
+// async function getUser() {
+//   const response = await fetch("https://jsonplaceholder.typicode.com/users/1");
+//   const data = await response.json();
+//   console.log(data.name);
+// }
+// getUser();
 
 // | Keyword | Meaning                            |
 // | ------- | ---------------------------------- |
