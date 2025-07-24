@@ -14,7 +14,7 @@ console.log(e); // not accessible because it has a functional scope.
 
 
 
-// we can create create variables using let var const in global context as well Example:-
+// we can create variables using let var const in global context as well Example:-
 var a = 100;     // Global variable using `var`
 let b = 200;     // Global variable using `let` (in the global context)
 const c = 300;   // Global constant

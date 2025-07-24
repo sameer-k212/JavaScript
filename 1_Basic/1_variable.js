@@ -1,4 +1,4 @@
-// use prefere not to use var: because it has block scope and functional scope
+// use prefere not to use var: because it has global scope and functional scope
 // do not use var date type
 // recomend to use only const and let
 

@@ -20,7 +20,7 @@ function outer(){
         console.log(a);
         console.log(money);
     }
-    return inner();
+    return inner();   // inner() is called here  and it will return 
 }
 var x = outer();
 console.log(x);
