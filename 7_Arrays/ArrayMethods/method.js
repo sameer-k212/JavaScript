@@ -1,12 +1,15 @@
+// array in js is dynamic.
 const fruits = ["Banana", "Orange", "Apple", "Mango"];
 const a = [1,2,3.0,4];
 let fruit = fruits.at(-1); // return last indexed element
 console.log(typeof fruit); // string because it is a string
 console.log(typeof a); // object
+console.log(Array.isArray(a)); // true becaue it is an array 
+console.log(Array.isArray(fruit)); // false because it is a string
 console.log(fruit); // Mango
 
 
-// arr.push() && arr.pop()
+// arr.push() && arr.pop() : add/remove element from the end of the array.
 console.log("----------------------------------------");
 console.log(fruits); // ["Banana", "Orange", "Apple", "Mango"]
 console.log("adding kiwi");

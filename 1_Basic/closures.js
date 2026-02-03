@@ -1,3 +1,4 @@
+// closure is function is 
 function outer(){
     var money = 50;
     function inner(){
@@ -20,9 +21,11 @@ function outer(){
         console.log(a);
         console.log(money);
     }
-    return inner();   // inner() is called here  and it will return 
+    return inner();   
+    // inner() is called here  and it will return undefined because inner function has no
+    // return statement
 }
 var x = outer();
-console.log(x);
+console.log(x); 
 
 

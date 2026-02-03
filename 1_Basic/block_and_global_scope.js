@@ -1,16 +1,26 @@
 // global scope
 function a(){
-  b = 9;
+  g = 9;
   let c = 19;
   const d = 10;
   var e = 20;
-
 }
 a();
-console.log(b); // accessible because it has a global scope. 
-console.log(c); // not accessible because it has a block scope.
-console.log(d); // not accessible because it has a block scope.
-console.log(e); // not accessible because it has a functional scope.
+console.log(g); // accessible because it has a global scope. 
+// console.log(c); // not accessible because it has a block scope.
+// console.log(d); // not accessible because it has a block scope.
+// console.log(e); // not accessible because it has a functional scope.
+
+
+
+// justifying how var has function scope
+function fun(){
+  if(true){
+    var x = 10; // not block scope but has functional scope.
+  }
+  console.log(x);
+};
+fun();
 
 
 

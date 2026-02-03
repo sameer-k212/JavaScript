@@ -37,7 +37,7 @@ myFun();
 
 console.log("------------------------------------------------------");
 // to immediate call
-(function myFun1 (){ // named IIFE
+(function myFun1 (){ // named IIFE- > Immediately Invoked Function Expressions
     console.log("Hello World1");
 })();
 
@@ -65,7 +65,7 @@ console.log("------------------------------------------------------");
 // is you want to pass argument
 (  function(name){
     console.log(`new ${name}`);
-}  )("world");
+})("world");
 
 
 

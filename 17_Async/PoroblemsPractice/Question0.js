@@ -96,10 +96,9 @@
 // JavaScript Asynchronous Execution Example with await
 async function a() {
     console.log(1);
-    await b();
+    await b();   // means wait for b() to complete then we will move further
     console.log(2);
 }
-
 async function b() {
     console.log(3);
     c();

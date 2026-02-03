@@ -69,3 +69,6 @@ console.log(typeof e); // string
 
 // console.log(value); // ReferenceError: value is not defined
 
+// how can i get the datatype of a array
+const array = [1, 2, 3, 4, 5];
+console.log(Array.isArray(array)); // true

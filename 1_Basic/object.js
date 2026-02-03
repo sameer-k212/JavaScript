@@ -1,5 +1,6 @@
 var obj = {'name1':'Sameer',age1:45,city1:'delhi'}
-console.log(obj) // object list
+console.log(typeof obj) // object
+console.log(obj);
 
 console.log(obj.age1) // 
 

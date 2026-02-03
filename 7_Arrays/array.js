@@ -50,7 +50,7 @@ function concatExample(arr1, arr2) {
 }
 concatExample([1, 2, 3], [4, 5, 6]);
 
-// forEach()
+// forEach() : use for iteration
 function forEachExample(arr) {
   console.log("Original Array:", arr);
 
@@ -64,7 +64,7 @@ forEachExample([1, 2, 3]);
 function mapExample(arr) {
   console.log("Original Array:", arr);
 
-  let newArr = arr.map(function(item) {
+  let newArr = arr.map(function(item) {  // use when you want to transform each item
     return item * 2;
   });
   console.log("After map:", newArr);
@@ -75,7 +75,7 @@ mapExample([1, 2, 3]);
 function filterExample(arr) {
   console.log("Original Array:", arr);
 
-  let newArr = arr.filter(function(item) {
+  let newArr = arr.filter(function(item) {  // use when you want to filter items based on condition
     return item > 3;
   });
   console.log("After filter:", newArr);
@@ -86,10 +86,10 @@ filterExample([1, 2, 3, 4, 5]);
 function findExample(arr) {
   console.log("Original Array:", arr);
 
-  let found = arr.find(function(item) {
+  let found = arr.find(function(item) { // use for finding a single item based on condition
     return item > 3;
   });
-  console.log("After find:", found);
+  console.log("After find:", found); // returns the first matched item.
 }
 findExample([1, 2, 3, 4, 5]);
 
