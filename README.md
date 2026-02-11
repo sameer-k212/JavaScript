@@ -1,4 +1,3 @@
----
 
 ## **Resources**
 
@@ -6,7 +5,6 @@
 - [JavaScript.info](https://javascript.info/)
 - [W3Schools](https://www.w3schools.com/js/)
 
----
 # **Complete JavaScript Guide 🚀**
 
 > This repository contains comprehensive JavaScript concepts, code examples, and projects covering everything from basics to advanced topics.
