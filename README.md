@@ -1,3 +1,12 @@
+---
+
+## **Resources**
+
+- [MDN Web Docs](https://developer.mozilla.org/)
+- [JavaScript.info](https://javascript.info/)
+- [W3Schools](https://www.w3schools.com/js/)
+
+---
 # **Complete JavaScript Guide 🚀**
 
 > This repository contains comprehensive JavaScript concepts, code examples, and projects covering everything from basics to advanced topics.
@@ -1122,15 +1131,7 @@ Location: `ZProjects/TypingTest/`
 - Use meaningful variable names
 - Keep functions small and focused
 
----
 
-## **Resources**
-
-- [MDN Web Docs](https://developer.mozilla.org/)
-- [JavaScript.info](https://javascript.info/)
-- [W3Schools](https://www.w3schools.com/js/)
-
----
 
 **Happy Coding! 🚀**
 
