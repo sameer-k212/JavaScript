@@ -11,33 +11,275 @@
 
 ## 📚 **Table of Contents**
 
-- [1. Variables](#1-variables)
-- [2. Data Types](#2-data-types)
-- [3. Objects](#3-objects)
-- [4. JSON](#4-json)
-- [5. Functions](#5-functions)
-- [6. Callbacks](#6-callbacks)
-- [7. Arrays](#7-arrays)
-- [8. Strings](#8-strings)
-- [9. Numbers](#9-numbers)
-- [10. Arrow Functions](#10-arrow-functions)
-- [11. Control Flow](#11-control-flow)
-- [12. Loops](#12-loops)
-- [13. Higher Order Functions](#13-higher-order-functions)
-- [14. DOM Manipulation](#14-dom-manipulation)
-- [15. Events](#15-events)
-- [16. Asynchronous JavaScript](#16-asynchronous-javascript)
-- [17. Promises](#17-promises)
-- [18. Async/Await](#18-asyncawait)
-- [19. Fetch API](#19-fetch-api)
-- [20. Regular Expressions](#20-regular-expressions)
-- [21. Projects](#21-projects)
+### **📁 Folder Structure Based Topics**
+
+- [1. Basic (1_Basic/)](#1-basic-1_basic)
+- [2. Variables (2_Variables/)](#2-variables-2_variables)
+- [3. Data Types (3_DataType/)](#3-data-types-3_datatype)
+- [4. Objects (4_Object/)](#4-objects-4_object)
+- [5. JSON (4_JSON/)](#5-json-4_json)
+- [6. Functions (5_Function/)](#6-functions-5_function)
+- [7. Callbacks (6_Callback/)](#7-callbacks-6_callback)
+- [8. Events (6_Events/)](#8-events-6_events)
+- [9. Arrays (7_Arrays/)](#9-arrays-7_arrays)
+- [10. Numbers (7_Number/)](#10-numbers-7_number)
+- [11. Strings (7_Strings/)](#11-strings-7_strings)
+- [12. Arrow Functions (8_ArrowFunction/)](#12-arrow-functions-8_arrowfunction)
+- [13. Control Flow (9_ControlFlow/)](#13-control-flow-9_controlflow)
+- [14. Loops (10_Loops/)](#14-loops-10_loops)
+- [15. Filter & Map (11_FilterMap/)](#15-filter--map-11_filtermap)
+- [16. DOM Manipulation (12_Dom/, 13_DOM/, 14_Dom1/, 15_Dom2/)](#16-dom-manipulation-12_dom-13_dom-14_dom1-15_dom2)
+- [17. DOM Events (16_DOM-Event/)](#17-dom-events-16_dom-event)
+- [18. Asynchronous JavaScript (17_Async/)](#18-asynchronous-javascript-17_async)
+- [19. API Requests (18_APIRequest/)](#19-api-requests-18_apirequest)
+- [20. Regular Expressions (19_Regex/)](#20-regular-expressions-19_regex)
+- [21. Fetch API (API_Fetch/, FetchAPI1/, FetchAPI2/)](#21-fetch-api-api_fetch-fetchapi1-fetchapi2)
+- [22. Promises & Async/Await (Promise_Async/)](#22-promises--asyncawait-promise_async)
+- [23. Projects (ZProjects/)](#23-projects-zprojects)
+- [24. Interview Preparation](#24-interview-preparation)
+- [25. Detailed Definitions](#25-detailed-definitions)
 
 ---
 
-## **1. Variables**
+## **1. Basic (1_Basic/)**
 
-### **var, let, const**
+### **📂 Folder Contents**
+- `1_variable.js` - Variable declarations and scope
+- `1_variable.md` - Variable documentation
+- `block_and_global_scope.js` - Scope examples
+- `closures.js` - Closure concepts
+- `function.js` - Function basics
+- `function.md` - Function documentation
+- `hof.js` - Higher Order Functions
+- `object.js` - Object basics
+
+---
+
+### **Topic: var**
+**Definition:** Function-scoped variable declaration that can be reassigned and redeclared. Hoisted to the top with undefined value.
+
+**Detailed Explanation:**
+var characteristics:
+- **Function Scope**: Accessible throughout entire function
+- **Hoisting**: Declaration moved to top, initialized as undefined
+- **Redeclaration**: Can declare same variable multiple times
+- **Global Object**: Creates property on window object (browser)
+- **No Block Scope**: Ignores {} blocks (if, for, while)
+
+Why avoid var:
+- Causes scope confusion
+- Hoisting leads to bugs
+- No block scope protection
+- Pollutes global scope
+
+**Example:**
+```javascript
+console.log(userPassword); // undefined (hoisted)
+var userPassword = "949434";
+userPassword = "89839";
+console.log(userPassword); // 89839
+```
+
+---
+
+### **Topic: let**
+**Definition:** Block-scoped variable declaration that can be reassigned but not redeclared in the same scope.
+
+**Detailed Explanation:**
+let characteristics:
+- **Block Scope**: Only accessible within {} block
+- **No Hoisting**: Cannot access before declaration (TDZ)
+- **No Redeclaration**: Error if declared twice in same scope
+- **Reassignment**: Value can be changed
+- **Temporal Dead Zone**: Period between scope entry and declaration
+
+When to use let:
+- Loop counters
+- Variables that change value
+- Block-specific variables
+- When you need reassignment
+
+**Example:**
+```javascript
+let email = "sameerkushwaha2003@gmail.com";
+console.log(email); // sameerkushwaha2003@gmail.com
+email = "new@email.com";
+console.log(email); // new@email.com
+```
+
+---
+
+### **Topic: const**
+**Definition:** Block-scoped constant declaration that cannot be reassigned or redeclared. Must be initialized at declaration.
+
+**Detailed Explanation:**
+const characteristics:
+- **Block Scope**: Only accessible within {} block
+- **No Reassignment**: Cannot change reference
+- **Must Initialize**: Must assign value at declaration
+- **Immutable Binding**: Reference is constant, not value
+- **Object/Array Mutation**: Can modify properties/elements
+
+When to use const:
+- Default choice for all variables
+- Values that shouldn't change
+- Function declarations
+- Import statements
+- Configuration values
+
+Important Note:
+const makes the binding immutable, not the value:
+```javascript
+const obj = { name: 'John' };
+obj.name = 'Jane'; // ✅ Allowed (modifying property)
+obj = {}; // ❌ Error (reassigning reference)
+```
+
+**Example:**
+```javascript
+const userId = 2215001565;
+console.log(typeof userId); // number
+// userId = 123; // Error: Assignment to constant variable
+```
+
+---
+
+### **Topic: Hoisting**
+**Definition:** JavaScript's default behavior of moving all declarations to the top of the current scope before code execution.
+
+**Detailed Explanation:**
+What gets hoisted:
+- **var declarations**: Hoisted with undefined value
+- **Function declarations**: Fully hoisted (can call before declaration)
+- **let/const**: Hoisted but in Temporal Dead Zone
+- **Function expressions**: Not hoisted
+- **Class declarations**: Not hoisted
+
+Hoisting Order:
+1. Function declarations (highest priority)
+2. Variable declarations
+3. Variable assignments (not hoisted)
+
+Temporal Dead Zone (TDZ):
+- Period between scope entry and let/const declaration
+- Accessing variable in TDZ throws ReferenceError
+- Prevents using variables before initialization
+
+**Example:**
+```javascript
+console.log(x); // undefined (var is hoisted)
+var x = 5;
+
+console.log(y); // ReferenceError (let is not hoisted)
+let y = 10;
+```
+
+---
+
+### **Topic: Scope**
+**Definition:** The accessibility of variables, functions, and objects in particular parts of code during runtime.
+
+**Example:**
+```javascript
+// Global scope
+function a() {
+  g = 9; // Global variable
+  let c = 19; // Block scope
+  const d = 10; // Block scope
+  var e = 20; // Function scope
+}
+a();
+console.log(g); // 9 (accessible globally)
+```
+
+---
+
+### **Topic: Closure**
+**Definition:** A function that has access to variables in its outer (enclosing) function's scope, even after the outer function has returned.
+
+**Detailed Explanation:**
+How Closures Work:
+- Inner function "closes over" outer function's variables
+- Creates private variables (data encapsulation)
+- Maintains reference to outer scope
+- Survives after outer function execution
+
+Why Closures are Important:
+- **Data Privacy**: Create private variables
+- **Factory Functions**: Generate customized functions
+- **Callbacks**: Maintain access to outer scope
+- **Event Handlers**: Remember state
+- **Module Pattern**: Organize code
+
+Closure Use Cases:
+1. Private variables and methods
+2. Function factories
+3. Memoization
+4. Currying
+5. Event handlers with state
+
+Memory Consideration:
+- Closures keep outer variables in memory
+- Can cause memory leaks if not careful
+- Clean up when no longer needed
+
+**Example:**
+```javascript
+function outer() {
+  var money = 50;
+  function inner() {
+    var a = 10;
+    console.log(a); // 10
+    console.log(money); // 50 (accessing outer variable)
+  }
+  return inner;
+}
+var x = outer();
+x(); // Closure in action
+```
+
+---
+
+### **Topic: Higher Order Function**
+**Definition:** A function that takes another function as an argument or returns a function as a result.
+
+**Detailed Explanation:**
+Higher Order Functions enable:
+- **Function Composition**: Combine simple functions
+- **Abstraction**: Hide implementation details
+- **Reusability**: Generic operations on data
+- **Functional Programming**: Declarative code style
+
+Types of Higher Order Functions:
+1. **Takes function as argument**: map, filter, reduce
+2. **Returns function**: Function factories, currying
+3. **Both**: Middleware, decorators
+
+Common Built-in HOFs:
+- Array methods: map(), filter(), reduce(), forEach()
+- Timer functions: setTimeout(), setInterval()
+- Event handlers: addEventListener()
+
+Benefits:
+- More readable code
+- Less repetition
+- Easier testing
+- Better abstraction
+
+**Example:**
+```javascript
+function fun(callback) {
+  callback(); // Executing callback function
+  return 10;
+}
+
+var b = () => {
+  console.log("inside b function");
+};
+
+var y = fun(b); // fun is higher order function
+console.log(y); // 10
+```
 
 ```javascript
 // const: Block scope, cannot be reassigned
@@ -91,24 +333,35 @@ fun();
 
 ---
 
-## **2. Data Types**
+## **2. Variables (2_Variables/)**
 
-### **Primitive Data Types**
-- Number
-- String
-- Boolean
-- Undefined
-- Null
-- Symbol
-- BigInt
+### **📂 Folder Contents**
+- `index.html` - HTML file for variables demo
+- `script.js` - JavaScript variables implementation
+- `style.css` - Styling for demo
 
-### **Non-Primitive Data Types**
-- Object
-- Array
-- Function
+### **Definitions**
+
+**Variable Declaration**: The process of creating a variable and optionally assigning it a value.
+
+**Variable Initialization**: Assigning an initial value to a variable at the time of declaration.
+
+**Variable Assignment**: Giving a value to a variable using the assignment operator (=).
+
+**Reassignment**: Changing the value of an existing variable.
+
+**Redeclaration**: Declaring a variable again with the same name in the same scope.
+
+**Temporal Dead Zone (TDZ)**: The period between entering scope and the actual declaration of let/const variables where they cannot be accessed.
+
+---
+
+## **3. Data Types (3_DataType/)**
+
+### **📂 Folder Contents**
+- `datatype.js` - Data type examples and operations
 
 ```javascript
-// Number
 const score = new Number(100);
 console.log(score.toFixed(2)); // 100.00
 console.log(score.toString().length); // 3
@@ -118,8 +371,38 @@ console.log(value.toPrecision(3)); // 124
 
 const hundred = 100000000;
 console.log(hundred.toLocaleString('en-IN')); // 10,00,00,000
+```
 
-// Math Object
+---
+
+### **Topic: Math Object**
+**Definition:** Built-in object providing mathematical constants and functions.
+
+**Detailed Explanation:**
+Math Object Features:
+- **Static Methods**: Call directly on Math (no instantiation)
+- **Constants**: PI, E, LN2, LN10, etc.
+- **Rounding**: round(), ceil(), floor(), trunc()
+- **Random**: random() for random numbers
+- **Min/Max**: min(), max() for comparisons
+- **Power/Root**: pow(), sqrt(), cbrt()
+- **Trigonometry**: sin(), cos(), tan(), etc.
+
+Common Use Cases:
+- Generate random numbers in range
+- Round decimal numbers
+- Find min/max values
+- Calculate powers and roots
+- Mathematical calculations
+
+Rounding Methods:
+- **Math.round()**: Nearest integer
+- **Math.ceil()**: Round up
+- **Math.floor()**: Round down
+- **Math.trunc()**: Remove decimal part
+
+**Example:**
+```javascript
 console.log(Math.PI); // 3.141592653589793
 console.log(Math.round(4.5)); // 5
 console.log(Math.ceil(4.4)); // 5
@@ -132,8 +415,15 @@ console.log(Math.random()); // Random number between 0 and 1
 const min = 10;
 const max = 20;
 console.log(Math.floor(Math.random() * (max - min + 1)) + min);
+```
 
-// Type checking
+---
+
+### **Topic: typeof Operator**
+**Definition:** Returns a string indicating the type of the operand.
+
+**Example:**
+```javascript
 let a = 5;
 console.log(typeof a); // number
 
@@ -143,12 +433,6 @@ console.log(Array.isArray(arr)); // true
 
 let obj = { name: 'John' };
 console.log(typeof obj); // object
-
-let c;
-console.log(typeof c); // undefined
-
-let d = null;
-console.log(typeof d); // object (JavaScript quirk)
 ```
 
 ---
